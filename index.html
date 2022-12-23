@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>DOM</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
 </head>
 <body>
     <div>
-        <h1>Counting : </h1>
-        <h1 class="counter"></h1>
+        <h1 class="title">Counter App</h1>
+        <h2 class="counter">Starting...</h2>
     </div>
+    <script>
+        let counter = document.querySelector('.counter');
+        let seconds = 0;
+        let minute = 0;
+        let hours = 0;
 
-    <script src="script.js"></script>
+        let time = hours + " hrs " + minute + " minute " + seconds + " seconds";
+        seconds.innerText = time;
+        
+        setInterval(() =>
+        {
+            if (seconds < 1000)
+            {
+                seconds += 1;
+                if (seconds === 60)
+                {
+                    minute += 1;
+                    seconds = 0;
+                }
+                if (minute === 60)
+                {
+                    hours += 1;
+                    minute = 0;
+                }
+                time = hours + " hrs " + minute + " minute " + seconds + " seconds";
+                counter.innerText = time;
+            }
+            else
+            {
+                clearInterval()
+            }
+        }, 1000)
+    </script>
 </body>
 </html>
